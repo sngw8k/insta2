@@ -14,3 +14,4 @@ class Post(models.Model):
         upload_to='image/%Y/%m'
     )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    # user_id = 
