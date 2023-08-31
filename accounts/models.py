@@ -10,3 +10,4 @@ class User(AbstractUser):
         upload_to='profile',
     )
     # post_set = 
+    # like_posts = 
