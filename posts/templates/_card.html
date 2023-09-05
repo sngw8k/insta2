@@ -11,11 +11,11 @@
         <!-- <h5 class="card-title"></h5> -->
         
         {% if post in user.like_posts.all  %}
-            <i class="bi bi-heart-fill heart" style="color: red" data-post-id="{{post.id}}"></i> 
+            <i class="bi bi-heart-fill heart" style="color: red" data-post-id="{{post.id}}">{{post.like_users.all|length}}</i> 
         {% else %}
-            <i class="bi bi-heart heart" data-post-id="{{post.id}}"></i>
+            <i class="bi bi-heart heart" data-post-id="{{post.id}}">{{post.like_users.all|length}}</i>
         {% endif %}
-        {{post.like_users.all|length}}명이 좋아합니다.
+        명이 좋아합니다.
 
         <p class="card-text">{{post.content}}</p>
         <p class="card-text">{{post.created_at|timesince}}</p>
