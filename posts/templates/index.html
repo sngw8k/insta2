@@ -6,4 +6,16 @@
         {% include '_card.html' %}
     {% endfor %}
 
+    <script>
+        const likeButtons = document.querySelectorAll('i.heart')
+        // console.log(likeButtons)
+
+        likeButtons.forEach((likeButton)=>{
+            // console.log(likeButton)
+            likeButton.addEventListener('click', (event)=>{
+                console.log(event)
+            })
+        })
+    </script>
+
 {% endblock %}
