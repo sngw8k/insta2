@@ -36,6 +36,27 @@ def create(request):
 
     return render(request, 'form.html', context)
 
+@login_required
+def post_update(request, post_id):
+
+    post = Post.objects.get(id=post_id)
+    if request.user != post.user:
+        return redirect('posts:index')
+    
+    if request.method == 'POST':
+        form = PostForm(request.POST, instance = post)
+
+        if form.is_valid():
+            post = form.save()
+            return redirect('posts:index')
+    else:
+        form = PostForm(instance=post)
+
+    context = {
+        'form':form
+    }
+    
+    return render(request, 'post_update.html', context)
 
 @login_required
 def comment_create(request, post_id):

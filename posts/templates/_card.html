@@ -4,7 +4,17 @@
         <p>
             <img src="{{post.user.profile_image.url}}" alt="" class="rounded-circle" width="50px">
             <a href="{% url 'accounts:profile' username=post.user %}" class="text-reset text-decoration-none">{{post.user}}</a>
+
+            <!-- post 수정 -->
+            {% if user.id == post.user.id %}
+                <span>
+                    <a href="{% url 'posts:post_update' post.id %}">
+                        <i class="fa-solid fa-pen-to-square"></i>
+                    </a>
+                </span>
+            {% endif %}
         </p>
+        
     </div>
     <img src="{{post.image.url}}" alt="...">
     <div class="card-body">
@@ -33,7 +43,8 @@
 
 
         {% for comment in post.comment_set.all %}
-            <li>{{comment.user}} : {{comment.content}}
+            <li><img src="{{comment.user.profile_image.url}}" alt="" class="rounded-circle" width="25px">
+            {{comment.user}} : {{comment.content}}
             {% if user.id == comment.user.id %}
                 <a href="{% url 'posts:comment_delete' comment.id %}">
                     <i class="fa fa-trash-o fa1x"></i>
