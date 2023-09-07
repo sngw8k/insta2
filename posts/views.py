@@ -53,7 +53,7 @@ def post_update(request, post_id):
         form = PostForm(instance=post)
 
     context = {
-        'form':form
+        'form':form,
     }
     
     return render(request, 'post_update.html', context)
